@@ -1,5 +1,5 @@
 ﻿function gPassword() {
-    var length = 8,
+    var length = 11,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
         retVal = "";
     for (var i = 0, n = charset.length; i < length; ++i) {

@@ -1,60 +1,60 @@
- let stud = [
-        {firstName: 'Maks',   lastName:  'Kovtsun',  ratting:  '90'},
-        {firstName: 'Taras',  lastName:  'Seneyko',  ratting:  '85'},
-        {firstName: 'Ivan',   lastName:  'Sergeev',  ratting:  '98'},
-        {firstName: 'Taras',  lastName:  'Kyhar',    ratting:  '88',},
-        {firstName: 'Vital',  lastName:  'Payk',     ratting:  '84',},
-        {firstName: 'Tanya',  lastName:  'Marninen', ratting:  '82',},
-        {firstName: 'Oleg',   lastName:  'Oprishko', ratting:  '93',},
-        {firstName: 'Sasha',  lastName:  'Masnik',   ratting:  '75',},
-        {firstName: 'Nazar',  lastName:  'Ivanow',   ratting:  '60',},
+ let Grup = [
+        {firstName: 'Shapowal',   lastName:  'Denis',  ratting:  '90'},
+        {firstName: 'Stoyko',  lastName:  'Volodimir',  ratting:  '85'},
+        {firstName: 'seredinagiy',   lastName:  'Saichishin',  ratting:  '98'},
+        {firstName: 'Ivan',  lastName:  'Saichishin',    ratting:  '88',},
+        {firstName: 'Maxim',  lastName:  'Koloda',     ratting:  '84',},
+        {firstName: 'Maxim',  lastName:  'Kovzun', ratting:  '82',},
+        {firstName: 'Oleg',   lastName:  'Zhakun', ratting:  '93',},
+        {firstName: 'Dmitro',  lastName:  'Koval',   ratting:  '75',},
+        {firstName: 'Dmitro',  lastName:  'Klimovskiy',   ratting:  '60',},
     ]
 
-    const sortObj = (arr, poz) => {
-        let compare = (a, b) => a[poz] > b[poz] ? 1 : a[poz] == b[poz] ? 0 : -1;
+    const sortObj = (arr, id) => {
+        let compare = (a, b) => a[id] > b[id] ? 1 : a[id] == b[id] ? 0 : -1;
         arr.sort(compare);
     }
 
     const compare = (arr, key, callback) => arr.reduce((prev, curr) =>
         (callback(prev[key], curr[key]) ? prev : curr), {})[key];
 
-    const rateMin = compare(stud, 'ratting', (a, b) => a < b);
-    const rateMax = compare(stud, 'ratting', (a, b) => a > b);
+    const rateMin = compare(Grup, 'ratting', (a, b) => a < b);
+    const rateMax = compare(Grup, 'ratting', (a, b) => a > b);
 
 
-    function ser () {
-        let sum=0;
-        for (const key in stud){
-            sum += +stud[key].ratting;
+    function seredina () {
+        let suma=0;
+        for (const key in Grup){
+            suma += +Grup[key].ratting;
         };
-        let ser = Math.ceil(sum/stud.length);
-        return ser.toString();
+        let seredina = Math.ceil(suma/Grup.length);
+        return seredina.toString();
     }
 
     function rate (){
-        for (const key in stud) {
+        for (const key in Grup) {
             let value;
-            value = Math.round(((rateMax/stud[key].ratting)*100)-100);
-            stud[key].rate = value;
+            value = Math.round(((rateMax/Grup[key].ratting)*100)-100);
+            Grup[key].rate = value;
         }
     }
 	//Sorting
-    sortObj(stud, 'firstName');
-    console.log(stud);
+    sortObj(Grup, 'firstName');
+    console.log(Grup);
     console.log('\n')
-    sortObj(stud, 'lastName');
-    console.log(stud);
+    sortObj(Grup, 'lastName');
+    console.log(Grup);
     console.log('\n')
-    sortObj(stud, 'ratting');
-    console.log(stud);
+    sortObj(Grup, 'ratting');
+    console.log(Grup);
     console.log('\n');
 	//
 
     console.log('Мінімальне та Максимальне значення'+'\n'+`Min: ${rateMin}, Max: ${rateMax}`);
-    console.log(stud.find(x => x.ratting === ser()));
-    console.log(stud.find(x => x.ratting === rateMin));
-    console.log(stud.find(x => x.ratting === rateMax));
+    console.log(Grup.find(x => x.ratting === seredina()));
+    console.log(Grup.find(x => x.ratting === rateMin));
+    console.log(Grup.find(x => x.ratting === rateMax));
 
     rate();
     console.log('\n'+'Добавлення поля rate: ')
-    console.log(stud);
+    console.log(Grup);
